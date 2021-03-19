@@ -18,5 +18,5 @@ restart:
 	docker-compose up
 
 rmi: # remove images (docker)
-	docker-compose stop idam
+	docker-compose stop
 	docker rmi $$(docker images --filter=reference='*app*' --filter=reference='*/*app*' -q) --force
