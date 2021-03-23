@@ -19,9 +19,9 @@ const Register = async (context: Context) => {
 
         const payload = await body.value;
 
-        const data = scrubPayload(payload)(RegisterDataModel)(equalLength)(vs.applySchemaObject)
+        const {data , message} = scrubPayload(payload)(RegisterDataModel)(equalLength)(vs.applySchemaObject)
 
-        data === true ? (context.response.status = Status.OK , context.response.body=STATUS_TEXT.get(Status.OK) ) : (context.response.status = Status.BadRequest , context.response.body = STATUS_TEXT.get(Status.BadRequest) )
+        data === true ? (context.response.status = Status.OK , context.response.body=STATUS_TEXT.get(Status.OK) ) : (context.response.status = Status.BadRequest , context.response.body = message)
     }
     // when the request fails
     catch(e) {
