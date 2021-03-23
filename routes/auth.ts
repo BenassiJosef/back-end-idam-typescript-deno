@@ -5,6 +5,6 @@ const authRouter = new Router();
 import Register from "../controllers/register.ts";
 
 authRouter
-  .post("/register", Register)
+  .post("/register", Register);
 
 export default authRouter;
