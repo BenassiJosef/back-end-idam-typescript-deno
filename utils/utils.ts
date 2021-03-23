@@ -1,4 +1,4 @@
-export function lengthsMatch(a : Record<string, unknown> = {}, b: Record<string, unknown> = {}, errorMessage:string) : boolean {
-  if(Object.keys(a).length !== Object.keys(b).length) throw {message: errorMessage}
+export function equalLength(a : Record<string, unknown> = {}, b: Record<string, unknown> = {}) : boolean {
+  if(Object.keys(a).length !== Object.keys(b).length) return false
   return true 
 }
