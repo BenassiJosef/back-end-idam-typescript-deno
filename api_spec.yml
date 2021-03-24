@@ -1,0 +1,33 @@
+openapi: 3.0.1
+info:
+  title: Deno IDAM API
+  description: "This is a generic identity management service API. AWS Cognito intergrations"
+  version: 0.0.1-oas3
+tags:
+  - name: "meta"
+    description: "Application health checks and meta data endpoints."
+  - name: "register"
+    description: "Register new users"
+servers:
+  - url: "http://localhost:8000/api"
+    description: Local development server running on developer's machine.
+paths:
+  /ping:
+    get:
+      tags:
+        - meta
+      summary: Test that the API is running.
+      description: "This endpoint is a health check to determine if the API is reachable."
+      responses:
+        "200":
+          description: Ping success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  local_time:
+                    type: string
+                    format: date-time

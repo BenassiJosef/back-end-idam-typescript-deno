@@ -1,10 +1,9 @@
 import { Application } from "https://deno.land/x/oak/mod.ts";
 import authRouter from "./src/routes/auth.ts";
+import pingRouter from "./src/routes/ping.ts";
 import {
-  bold,
   cyan,
   green,
-  yellow,
 } from "https://deno.land/std@0.84.0/fmt/colors.ts";
 
 const app = new Application();
@@ -23,6 +22,9 @@ app.use(async (context, next) => {
 
 app.use(authRouter.routes());
 app.use(authRouter.allowedMethods());
+
+app.use(pingRouter.routes());
+app.use(pingRouter.allowedMethods());
 
 app.addEventListener("listen", ({ secure, hostname, port }) => {
   const protocol = secure ? "https://" : "http://";
