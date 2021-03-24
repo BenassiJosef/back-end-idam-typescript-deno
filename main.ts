@@ -1,5 +1,5 @@
 import { Application } from "https://deno.land/x/oak/mod.ts";
-import authRouter from "./routes/auth.ts";
+import authRouter from "./src/routes/auth.ts";
 import {
   bold,
   cyan,
