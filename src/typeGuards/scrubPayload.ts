@@ -1,6 +1,5 @@
 import { SchemaObject } from "https://deno.land/x/value_schema@v3.0.0/dist-deno/libs/types.ts";
 import { DataResponse, EqualLengthObjects } from "../types/types.ts";
-import { RegisterDataModel } from "../dataModels/dataModels.ts";
 
 const scrubPayload = (ojb: Record<string, unknown> = {}) => {
   return (compareObj: SchemaObject) => {
