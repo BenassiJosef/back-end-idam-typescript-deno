@@ -5,4 +5,3 @@ export type DataResponse = {
   data: boolean;
   message?: string;
 };
-                                                                                                                            

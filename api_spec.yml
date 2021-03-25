@@ -9,7 +9,7 @@ tags:
   - name: "register"
     description: "Register new users"
 servers:
-  - url: "http://localhost:8000/api"
+  - url: "http://localhost:8000/api/v1"
     description: Local development server running on developer's machine.
 paths:
   /ping:
@@ -28,6 +28,8 @@ paths:
                 properties:
                   message:
                     type: string
-                  local_time:
+                  date:
                     type: string
-                    format: date-time
+                    format: string
+                  status:
+                    type: string

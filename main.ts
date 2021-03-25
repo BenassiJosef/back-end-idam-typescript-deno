@@ -1,10 +1,8 @@
 import { Application } from "https://deno.land/x/oak/mod.ts";
 import authRouter from "./src/routes/auth.ts";
 import pingRouter from "./src/routes/ping.ts";
-import {
-  cyan,
-  green,
-} from "https://deno.land/std@0.84.0/fmt/colors.ts";
+import { cyan, green } from "https://deno.land/std@0.84.0/fmt/colors.ts";
+import { oakCors } from "https://deno.land/x/cors/mod.ts";
 
 const app = new Application();
 
@@ -19,7 +17,7 @@ app.use(async (context, next) => {
     } - ${JSON.stringify(value)}`,
   );
 });
-
+app.use(oakCors());
 app.use(authRouter.routes());
 app.use(authRouter.allowedMethods());
 
