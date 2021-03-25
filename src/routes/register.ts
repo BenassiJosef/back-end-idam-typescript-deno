@@ -1,9 +1,9 @@
 import { Router } from "https://deno.land/x/oak/mod.ts";
 import Register from "../controllers/register.ts";
 
-const authRouter = new Router();
+const registerRouter = new Router();
 
-authRouter
+registerRouter
   .post("/api/v1/register", Register);
 
-export default authRouter;
+export default registerRouter;

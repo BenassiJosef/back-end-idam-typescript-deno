@@ -33,3 +33,49 @@ paths:
                     format: string
                   status:
                     type: string
+  /register:
+    post:
+      tags:
+        - register
+      summary: Registers and creates a user.
+      description: "Users are registered using their email address as a unique `username`.  Note that the `username` is set to the same value as the `email`."
+      requestBody:
+        description: User parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: User created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User created successfully pending confirmation. 
+components:
+  securitySchemes:
+      bearerAuth:            # arbitrary name for the security scheme
+        type: http
+        scheme: bearer
+        bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+  schemas:
+    User:
+      type: object
+      properties:
+        firstname:
+          type: string
+        secondname:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+        address:
+          type: string
+        password:
+          type: string

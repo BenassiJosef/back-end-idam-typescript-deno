@@ -4,7 +4,7 @@ import vs from "https://deno.land/x/value_schema/mod.ts";
 import scrubPayload from "../typeGuards/scrubPayload.ts";
 import { Status, STATUS_TEXT } from "https://deno.land/std/http/http_status.ts";
 import { equalLength } from "../utils/utils.ts";
-import { RegisterDataModel } from "../dataModels/dataModels.ts";
+import { RegisterDataModel } from "../dataModels/register.ts";
 
 const Register = async (context: Context) => {
   try {
