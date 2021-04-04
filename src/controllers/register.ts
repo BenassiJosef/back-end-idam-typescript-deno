@@ -5,6 +5,7 @@ import scrubPayload from "../typeGuards/scrubPayload.ts";
 import { Status, STATUS_TEXT } from "https://deno.land/std/http/http_status.ts";
 import { equalLength } from "../utils/utils.ts";
 import { RegisterDataModel } from "../dataModels/register.ts";
+import {ConfirmSignUpCommand} from "https://deno.land/x/aws_sdk@v3.10.0.0/client-cognito-identity-provider/mod.ts"
 
 const Register = async (context: Context) => {
   try {
@@ -31,7 +32,7 @@ const Register = async (context: Context) => {
     const { data, message } = scrubPayload(payload)(RegisterDataModel)(
       equalLength,
     )(vs.applySchemaObject);
-
+    
     data === true
       ? (context.response.status = Status.OK,
         context.response.body = STATUS_TEXT.get(Status.OK))
