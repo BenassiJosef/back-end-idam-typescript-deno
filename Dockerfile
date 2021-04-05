@@ -6,6 +6,6 @@ WORKDIR /app
 
 ADD . /app
 
-RUN deno cache main.ts
+RUN deno --unstable cache main.ts
 
-CMD ["run", "--allow-net", "--allow-write", "--allow-read", "main.ts"]
+CMD ["run","--unstable", "--allow-net", "--allow-write", "--allow-read","--allow-env", "main.ts"]
