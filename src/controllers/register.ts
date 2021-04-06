@@ -34,11 +34,16 @@ const Register = async (context: Context) => {
     )(vs.applySchemaObject);
 
     if (data) {
-      await register(payload);
-      context.response.status = Status.OK;
-    } else {
-      (context.response.status = Status.BadRequest),
-        (context.response.body = message);
+      const { status, body } = await register(payload);
+      if (status && body) {
+        context.response.status = status;
+        context.response.body = body;
+      } else {
+        throw {
+          body: message,
+          status: Status.BadRequest,
+        };
+      }
     }
   } catch (e) {
     // when the request fails

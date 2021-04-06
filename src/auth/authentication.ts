@@ -2,9 +2,14 @@ import { ClientId } from "../aws/config.ts";
 import Cognito from "../aws/services/cognito.ts";
 import { RegisterData } from "../dataModels/register.ts";
 
-const register = async (payload: RegisterData) => {
+interface RegResponse {
+  status: number | undefined;
+  body: string;
+}
+
+const register = async (payload: RegisterData): Promise<RegResponse> => {
   const newCognitoUser = {
-    ClientId: Deno.env.get("AWS_USER_POOL_CLIENT_ID") || "",
+    ClientId: ClientId,
     Username: payload.username,
     Password: payload.password,
     UserAttributes: [
@@ -29,9 +34,9 @@ const register = async (payload: RegisterData) => {
 
   try {
     const response = await Cognito.signUp(newCognitoUser);
-    return response.$metadata.httpStatusCode;
+    return { status: response.$metadata.httpStatusCode, body: "OK" };
   } catch (error) {
-    console.log(error);
+    return { status: error.$metadata.httpStatusCode, body: error.name };
   }
 };
 
