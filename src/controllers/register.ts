@@ -5,7 +5,7 @@ import scrubPayload from "../typeGuards/scrubPayload.ts";
 import { Status, STATUS_TEXT } from "https://deno.land/std/http/http_status.ts";
 import { equalLength } from "../utils/utils.ts";
 import { RegisterDataModel } from "../dataModels/register.ts";
-import register from "../auth/authentication.ts";
+import register from "../auth/register.ts";
 
 const Register = async (context: Context) => {
   try {
